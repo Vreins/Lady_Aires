@@ -1,0 +1,40 @@
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "firebase-admin": "^12.7.0",
+    "formik": "^2.4.6",
+    "joi": "^17.13.3",
+    "joi-password-complexity": "^5.2.0",
+    "json-viewer": "^2.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mailersend": "^2.3.0",
+    "mailgun-js": "^0.22.0",
+    "mongoose": "^8.5.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.4",
+    "path": "^0.12.7",
+    "react-hot-toast": "^2.4.1"
+  },
+  "name": "esther",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A website for esther",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
+  }
+}
