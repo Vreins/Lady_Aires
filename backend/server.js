@@ -9,10 +9,10 @@ import userRouter from './routers/userRouter.js';
 import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
 
-
+dotenv.config();
 console.log("MongoDB URL:", process.env.MONGO_DB_URL);
 
-// dotenv.config();
+// 
 
 const app = express();
 app.use(express.json());
@@ -25,6 +25,9 @@ mongoose.connect(
   )
   .then(() => console.log('DB Connection Successfull'))
   .catch((err) => {console.error(err)});
+
+  
+  
 
 //  This (the app.use) instead of the
 // app.get('/', (req, res) => {
@@ -45,6 +48,11 @@ app.get('/', (req, res) => {
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use(express.static(path.join(__dirname, '../frontend/src')));
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, '/frontend/src/index.js'))
+  );
+
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
