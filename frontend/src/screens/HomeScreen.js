@@ -31,7 +31,11 @@ return (
           {/* {products.slice(0, 5).map((product) => (
             <Product key={product._id} product={product}></Product>
             ))} */}
-            {products.map((product) => (<Product key={product._id} product={product}></Product>))}
+            {Array.isArray(products) ? (
+  products.map((product) => <Product key={product._id} product={product} />)
+) : (
+  <MessageBox variant="danger">No products found</MessageBox>
+)}
         </div>
       )}
     </div>
