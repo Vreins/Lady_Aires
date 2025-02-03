@@ -17,7 +17,7 @@ console.log("MongoDB URL:", process.env.MONGO_DB_URL);
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
+app.use(cors({ origin: "*"}))
 // app.disable("x-powered-by")
 mongoose.connect(
   process.env.MONGO_DB_URL,
