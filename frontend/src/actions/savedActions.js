@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { SAVED_ADD_ITEM,SAVED_REMOVE_ITEM } from '../constants/savedConstants';
 
 export const addToSavedItem = (productId, qty) => async (dispatch, getState) => {
-  const { data } = await Axios.get(`/api/products/${productId}`);
+  const { data } = await Axios.get(`https://lady-aires-wc74.onrender.com/api/products/${productId}`);
   dispatch({
     type: SAVED_ADD_ITEM,
     payload: {

@@ -4,7 +4,7 @@ import { CART_ADD_ITEM, CART_REMOVE_ITEM,
   } from '../constants/cartConstants';
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
-  const { data } = await Axios.get(`/api/products/${productId}`);
+  const { data } = await Axios.get(`https://lady-aires-wc74.onrender.com/api/products/${productId}`);
   dispatch({
     type: CART_ADD_ITEM,
     payload: {
