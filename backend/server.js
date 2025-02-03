@@ -25,7 +25,8 @@ mongoose.connect(
   )
   .then(() => console.log('DB Connection Successfull'))
   .catch((err) => {console.error(err)});
-
+  
+  const __dirname = path.resolve();
   
   // Serve static files from the React frontend app
   app.use(express.static(path.join(__dirname, 'frontend', 'build')));
@@ -53,7 +54,7 @@ app.get('/', (req, res) => {
   res.send('Server is ready');
 });
 
-const __dirname = path.resolve();
+
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use(express.static(path.join(__dirname, '../frontend/build')));
   app.get('*', (req, res) =>
