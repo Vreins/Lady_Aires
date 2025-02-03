@@ -56,7 +56,7 @@ export default function ShippingAddressScreen() {
     if (!userInfo) {
       navigate('/signin');
     } else {
-      Axios.get(`/api/users/list?email=${userInfo.email}`)
+      Axios.get(`https://lady-aires-wc74.onrender.com/api/users/list?email=${userInfo.email}`)
         .then((response) => setSavedAddresses(response.data))
         .catch((error) => alert(error.response?.data?.message || 'Error fetching saved addresses'));
     }
@@ -91,7 +91,7 @@ export default function ShippingAddressScreen() {
     const addressToDelete = savedAddresses[index];
     try {
       // Send the address and email to the backend for deletion
-      await Axios.delete('/api/users/address', {
+      await Axios.delete('https://lady-aires-wc74.onrender.com/api/users/address', {
         data: { 
           ...addressToDelete,  // Send full address data
           email: userInfo.email // Include the user's email
@@ -119,7 +119,7 @@ export default function ShippingAddressScreen() {
         email: userInfo.email,
       };
 
-      const { data } = await Axios.post('/api/users/save', addressData);
+      const { data } = await Axios.post('https://lady-aires-wc74.onrender.com/api/users/save', addressData);
       alert(data.message);
 
       setSavedAddresses([...savedAddresses, addressData]);
