@@ -16,6 +16,13 @@ export default function ProductScreen(props) {
   const productId = params.id;
   const [hasPurchasedAndDelivered, setHasPurchasedAndDelivered] = useState(false);
 
+  useEffect(() => {
+    if (productId) {
+      dispatch(detailsProduct(productId));
+      // dispatch(addToSavedItem(productId, 1));
+    }
+  }, [dispatch, productId]);
+
   const [qty, setQty] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0); // for controlling the image slideshow
   const productDetails = useSelector((state) => state.productDetails);
