@@ -208,7 +208,6 @@ const location = useLocation(); // Get current location
             element={<ProductEditScreen/>}
             exact
           ></Route>
-          
 
             <Route
             path="/productlist"
