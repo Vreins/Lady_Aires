@@ -33,7 +33,7 @@ app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
 
 // Serve Static Files from React Frontend
-app.use(express.static(path.resolve(__dirname, 'frontend', 'build')));
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
 
 // Catch-All Route (must be AFTER API routes)
 app.get('*', (req, res) => {
