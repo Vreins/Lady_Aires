@@ -65,18 +65,25 @@ const orderList = useSelector((state) => state.orderList);
     <tr key={order._id}>
       <td>{order._id}</td>
       <td>{order.user ? order.user.name : order.shippingAddress.fullName}</td>
-      <td>{order.orderItems.map((item) => (
-                  <ul key={item.product}>
-                  <div className="min-30">
-                          <Link to={`/product/${item.product}`}>{item.name}</Link>
-                        </div>
-                        </ul>))}</td>
-                        <td>
+      <td>
   {order.orderItems.map((item) => (
-    <ul key={item.product?._id || item.product}>
+    <ul key={item.product?._id || item.product?.id || item.product?.slug || item.name}>
+      <div className="min-30">
+        <Link to={`/product/${item.product?._id || item.product?.id || item.product?.slug}`}>
+          {item.name}
+        </Link>
+      </div>
+    </ul>
+  ))}
+</td>
+<td>
+  {order.orderItems.map((item) => (
+    <ul key={item.product?.seller?._id || item.product?.seller?.seller?.id || item.name}>
       <div className="min-30">
         {item.product?.seller?.seller?.name ? (
-          <Link to={`/seller/${item.product.seller._id}`}>{item.product.seller.seller.name}</Link>
+          <Link to={`/seller/${item.product.seller._id}`}>
+            {item.product.seller.seller.name}
+          </Link>
         ) : (
           'Unknown Seller'
         )}
@@ -84,6 +91,7 @@ const orderList = useSelector((state) => state.orderList);
     </ul>
   ))}
 </td>
+
       <td>{order.createdAt.substring(0, 10)}</td>
       <td>{order.totalPrice.toFixed(2)}</td>
       <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
