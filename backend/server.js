@@ -38,6 +38,16 @@ app.use('/static', express.static(path.resolve(__dirname, 'frontend', 'build', '
 // Serve React build files (JS, CSS) from the build folder
 app.use(express.static(path.join(__dirname, 'frontend', 'build')));
 
+// Ensure proper MIME type for JS and CSS
+app.use((req, res, next) => {
+  if (req.url.endsWith('.js')) {
+    res.setHeader('Content-Type', 'application/javascript');
+  } else if (req.url.endsWith('.css')) {
+    res.setHeader('Content-Type', 'text/css');
+  }
+  next();
+});
+
 // Catch-All Route (must be AFTER API routes and static files)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'), (err) => {
