@@ -57,7 +57,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: JSON.parse(savedProduct) });
     return;
   }
-    const { data } = await Axios.get(`/api/products/${productId}`);
+    const { data } = await Axios.get(`https://lady-aires-wc74.onrender.com/api/products/${productId}`);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
