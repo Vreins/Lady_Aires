@@ -30,7 +30,6 @@
   "scripts": {
   "build": "cd frontend && npm install && npm run build",
   "start": "npm run build && node backend/server.js",
-  "postinstall": "npm run build"
 },
   "author": "",
   "license": "ISC",
