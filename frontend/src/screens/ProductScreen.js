@@ -66,6 +66,7 @@ export default function ProductScreen(props) {
   };
 
   useEffect(() => {
+    console.log(product)
     if (successReviewCreate) {
       window.alert('Review Submitted Successfully');
       setRating('');
