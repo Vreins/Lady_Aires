@@ -50,13 +50,8 @@ export const listProductCategories = () => async (dispatch) => {
 };
 
 export const detailsProduct = (productId) => async (dispatch) => {
-  try{
   dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
-  const savedProduct = localStorage.getItem('productDetails');
-  if (savedProduct) {
-    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: JSON.parse(savedProduct) });
-    return;
-  }
+  try {
     const { data } = await Axios.get(`https://lady-aires-wc74.onrender.com/api/products/${productId}`);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
