@@ -28,10 +28,10 @@
   "description": "A website for esther",
   "main": "index.js",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js"
-  },
+  "build": "cd frontend && npm install && npm run build",
+  "start": "npm run build && node backend/server.js",
+  "postinstall": "npm run build"
+},
   "author": "",
   "license": "ISC",
   "engines": {

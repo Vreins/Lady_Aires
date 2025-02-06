@@ -36,7 +36,7 @@ app.use('/api/orders', orderRouter);
 app.use('/static', express.static(path.resolve(__dirname, 'frontend', 'build', 'static'))); // Make sure static assets are available
 
 // Serve React build files (JS, CSS) from the build folder
-app.use(express.static(path.resolve(__dirname, 'frontend', 'build')));
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
 
 // Catch-All Route (must be AFTER API routes and static files)
 app.get('*', (req, res) => {
