@@ -11,7 +11,6 @@ import MessageBox from '../components/MessageBox';
 
 
 export default function PlaceOrderScreen(props) {
-
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
@@ -61,7 +60,7 @@ export default function PlaceOrderScreen(props) {
       Navigate(`/order/${order._id}`);
       dispatch({ type: ORDER_CREATE_RESET });
     }
-  }, [dispatch, order, props.history, success, Navigate]);
+  }, [dispatch, order, success, Navigate]);
 
   return (
     <div>

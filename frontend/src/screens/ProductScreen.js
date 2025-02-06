@@ -14,6 +14,7 @@ export default function ProductScreen(props) {
   const dispatch = useDispatch();
   const params = useParams();
   const productId = params.id;
+  
   const [hasPurchasedAndDelivered, setHasPurchasedAndDelivered] = useState(false);
 
    
