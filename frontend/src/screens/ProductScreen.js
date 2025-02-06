@@ -16,18 +16,18 @@ export default function ProductScreen(props) {
   const productId = params.id;
   const [hasPurchasedAndDelivered, setHasPurchasedAndDelivered] = useState(false);
 
-  useEffect(() => {
-    if (productId) {
-      dispatch(detailsProduct(productId));
-      // dispatch(addToSavedItem(productId, 1));
-    }
-  }, [dispatch, productId]);
+   
 
   const [qty, setQty] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0); // for controlling the image slideshow
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-
+  useEffect(() => {
+    if (!product || product._id !== productId) {
+      dispatch(detailsProduct(productId));
+    }
+  }, [dispatch, product, productId]);
+ 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
@@ -139,23 +139,29 @@ export default function ProductScreen(props) {
             <div className="col-2">
               {/* Image Slideshow */}
               <div className="slideshow-container">
-                <img
-                  className="large"
-                  src={product.images[currentImageIndex]} // show the current image
-                  alt={product.name}
-                />
-                <div className="slideshow-buttons">
-                  <button onClick={prevImage} disabled={currentImageIndex === 0}>
-                    &lt; Prev
-                  </button>
-                  <button
-                    onClick={nextImage}
-                    disabled={currentImageIndex === product.images.length - 1}
-                  >
-                    Next &gt;
-                  </button>
-                </div>
-              </div>
+  {product?.images?.length > 0 ? (
+    <>
+      <img
+        className="large"
+        src={product.images[currentImageIndex]}
+        alt={product.name}
+      />
+      <div className="slideshow-buttons">
+        <button onClick={prevImage} disabled={currentImageIndex === 0}>
+          &lt; Prev
+        </button>
+        <button
+          onClick={nextImage}
+          disabled={currentImageIndex === product.images.length - 1}
+        >
+          Next &gt;
+        </button>
+      </div>
+    </>
+  ) : (
+    <MessageBox>No Images Available</MessageBox>
+  )}
+</div>
             </div>
             <div className="col-1">
               <ul>
